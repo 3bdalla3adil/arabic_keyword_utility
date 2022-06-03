@@ -1,4 +1,4 @@
-from alphabet import alphabet,Harf,beggining_after,TATWEEL,tashkeel
+from alphabet import *
 
 # Reverse returns its argument string reversed rune-wise left to right.
 def Reverse(r):
@@ -21,7 +21,7 @@ def SmartLength(s):
 	r = list(s)
 
 	for value in r :
-		if tashkeel[value]: 
+		if tashkeel1[value]: 
 			continue
 		
 		length+=1
@@ -51,7 +51,7 @@ def RemoveTashkeel(s) :
 def RemoveTatweel(s) :
 	r = list(s)
 	for  value in s :
-		if TATWEEL.equals(value):
+		if TATWEEL==(value):
 			continue
 		
 		r.append(value)
@@ -66,24 +66,24 @@ def getCharGlyph(previousChar, currentChar, nextChar ):
 	nextIn     = False     # in the Arabic Alphabet or not
 
 	for s in alphabet :
-		if s.equals(previousChar) : # previousChar in the Arabic Alphabet ?
+		if s==(previousChar) : # previousChar in the Arabic Alphabet ?
 			previousIn = True
 		
 
-		if s.equals(nextChar) : # nextChar in the Arabic Alphabet ?
+		if s==(nextChar) : # nextChar in the Arabic Alphabet ?
 			nextIn = True
 		
 	
 
 	for s in alphabet :
 
-		if not s.equals(currentChar):  # currentChar in the Arabic Alphabet ?
+		if not s==(currentChar):  # currentChar in the Arabic Alphabet ?
 			continue
 		
 
 		if previousIn and nextIn : # between two Arabic Alphabet, return the medium glyph
 			for s in beggining_after :
-				if s.equals(previousChar) :
+				if s==(previousChar) :
 					return getHarf(currentChar).beggining
 				
 			
@@ -97,7 +97,7 @@ def getCharGlyph(previousChar, currentChar, nextChar ):
 
 		if previousIn : # final (because the next is not in the Arabic Alphabet)
 			for s in  beggining_after :
-				if s.equals(previousChar) :
+				if s==(previousChar) :
 					return getHarf(currentChar).isolated
 				
 			
@@ -137,7 +137,7 @@ def validateHarf(char) :
 # getHarf gets the correspondent Harf for the given Arabic char
 def getHarf(char) :
 	for s in alphabet :
-		if s.equals(char) :
+		if s==(char) :
 			return s
 
 	return Harf(unicodee= char, isolated= char, medium= char, final= char)
@@ -152,7 +152,7 @@ def RemoveAllNonArabicChars(text ) :
 		inAlphabet = False
 
 		for s in alphabet:
-			if s.equals(current) :
+			if s==(current) :
 				inAlphabet = True
 
 		if inAlphabet :
