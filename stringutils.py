@@ -21,7 +21,7 @@ def SmartLength(s):
 	r = list(s)
 
 	for value in r :
-		if tashkeel1[value]: 
+		if tashkeel[value]: 
 			continue
 		
 		length+=1
