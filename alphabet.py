@@ -1,25 +1,46 @@
 # Harf holds the Arabic character with its different representation forms {glyphs).
 class Harf:
 
-    def __init__(self,**kwagrs):
-        self.unicodee   = kwagrs['unicodee']
-        self.isolated   = kwagrs['isolated']
-        self.beggining  = kwagrs['beggining']
-        self.medium     = kwagrs['medium']
-        self.final      = kwagrs['final']
+	def __init__(self,**kwagrs):
+		self.unicodee   = kwagrs['unicodee']
+		self.isolated   = kwagrs['isolated']
+		self.beggining  = kwagrs['beggining']
+		self.medium     = kwagrs['medium']
+		self.final      = kwagrs['final']
+
+	def equals(self,char) :
+
+		if   self.unicodee  == char :
+			return True
+
+		elif self.beggining == char :
+			return True
+
+		elif self.isolated  == char:
+			return True
+
+		elif self.medium    == char:
+			return True
+
+		elif self.final     == char:
+			return True
+
+		else:
+			return False
 
 
 # Vowels (Tashkeel) characters.
 
-FATHA= '\u064e',
-FATHATAN ='\u064b',
-DAMMA = '\u064f',
-DAMMATAN= '\u064c',
-KASRA= '\u0650',
-KASRATAN= '\u064d',
-SHADDA= '\u0651',
-SUKUN= '\u0652'
+FATHA    = '\u064e'
+FATHATAN = '\u064b'
+DAMMA    = '\u064f'
+DAMMATAN = '\u064c'
+KASRA    = '\u0650'
+KASRATAN = '\u064d'
+SHADDA   = '\u0651'
+SUKUN    = '\u0652'
 
+tashkeel_list = [FATHA,FATHATAN,DAMMA,DAMMATAN,KASRA,KASRATAN,SHADDA,SUKUN]
 
 # Arabic Alphabet using the new Harf_type.
 
@@ -388,8 +409,6 @@ alphabet = [
 	LAM_ALEF_HAMZA_ABOVE
 ]
 
-
-
 # use dictionary for faster lookups.
 tashkeel = dict(FATHA= True, FATHATAN= True, DAMMA= True,
 	DAMMATAN= True, KASRA= True, KASRATAN= True,
@@ -410,5 +429,3 @@ beggining_after = dict(
 	ZAIN=             True,
 	WAW=              True,
 	ALEF_MAKSURA=     True)
-
-

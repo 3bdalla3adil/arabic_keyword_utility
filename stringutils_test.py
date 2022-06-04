@@ -1,4 +1,4 @@
-from stringutils import *
+from stringutils import Reverse,SmartLength,RemoveTashkeel,RemoveTatweel,ToGlyph,RemoveAllNonArabicChars
 
 import unittest
 

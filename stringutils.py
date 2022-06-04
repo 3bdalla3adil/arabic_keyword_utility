@@ -17,47 +17,42 @@ def Reverse(r):
 # without considering the Arabic Vowels (Tashkeel).
 def SmartLength(s):
 	# len() use int as return value, so we'd better follow for compatibility
-	length = 0
+
 	r = list(s)
-
-	for value in r :
-		if tashkeel[value]: 
-			continue
-		
-		length+=1
-	
-
-	return length
+	l=[]
+	for i in range(len(r)):
+		if r[i] in tashkeel_list:
+			continue	
+		else:
+			l.append(r[i])
+	return len(l)
 
 
-# RemoveTashkeel returns its argument as rune-wise string without Arabic vowels (Tashkeel).
+# RemoveTashkeel returns its argument as string without Arabic vowels (Tashkeel).
 def RemoveTashkeel(s) :
-	# var r []rune
-	# the capcity of the slice wont be greater than the length of the string itself
-	# hence, cap = len(s)
-	r = list (s)
-
-	for  value in s:
-		if tashkeel[value] :
-			continue
-		
-		r.append(value)
+	r = list(s)
 	
-
-	return str(r)
+	l=[]
+	for i in range(len(r)):
+		
+		if r[i] in tashkeel_list:
+			continue	
+		else:
+			l.append(r[i])
+	return "".join(l)
 
 
 # RemoveTatweel returns its argument as rune-wise string without Arabic Tatweel character.
 def RemoveTatweel(s) :
 	r = list(s)
-	for  value in s :
-		if TATWEEL==(value):
+	l=[]
+	for i in range (len(r)) :
+		if TATWEEL.unicodee in r[i]:
 			continue
-		
-		r.append(value)
-	
+		else:
+			l.append(r[i])
 
-	return str(r)
+	return "".join(l)
 
 
 def getCharGlyph(previousChar, currentChar, nextChar ):
@@ -66,44 +61,34 @@ def getCharGlyph(previousChar, currentChar, nextChar ):
 	nextIn     = False     # in the Arabic Alphabet or not
 
 	for s in alphabet :
-		if s==(previousChar) : # previousChar in the Arabic Alphabet ?
+		if s.equals(previousChar) : # previousChar in the Arabic Alphabet ?
 			previousIn = True
 		
-
-		if s==(nextChar) : # nextChar in the Arabic Alphabet ?
+		if s.equals(nextChar) : # nextChar in the Arabic Alphabet ?
 			nextIn = True
 		
-	
-
 	for s in alphabet :
 
-		if not s==(currentChar):  # currentChar in the Arabic Alphabet ?
+		if not s.equals(currentChar):  # currentChar in the Arabic Alphabet ?
 			continue
-		
 
 		if previousIn and nextIn : # between two Arabic Alphabet, return the medium glyph
 			for s in beggining_after :
-				if s==(previousChar) :
+				if s.equals(previousChar) :
 					return getHarf(currentChar).beggining
-				
 			
-
 			return getHarf(currentChar).medium
 		
-
 		if nextIn : # beginning (because the previous is not in the Arabic Alphabet)
 			return getHarf(currentChar).beggining
 		
-
 		if previousIn : # final (because the next is not in the Arabic Alphabet)
 			for s in  beggining_after :
-				if s==(previousChar) :
+				if s.equals(previousChar) :
 					return getHarf(currentChar).isolated
 				
-			
 			return getHarf(currentChar).final
 		
-
 		if not previousIn and not nextIn :
 			return getHarf(currentChar).isolated
 		
@@ -113,31 +98,31 @@ def getCharGlyph(previousChar, currentChar, nextChar ):
 # equals() return True if the given Arabic char is alphabetically equal to
 # the current Harf regardless its shape (Glyph)
 
-def validateHarf(char) :
-	if   Harf == char.unicodee :
-		return True
+# def equals(char,c) :
+# 	if   char == char.unicodee :
+# 		return True
 
-	elif Harf == char.beggining:
-		return True
+# 	elif char == char.beggining:
+# 		return True
 
-	elif Harf == char.isolated:
-		return True
+# 	elif char == char.isolated:
+# 		return True
 
-	elif Harf == char.medium:
-		return True
+# 	elif char == char.medium:
+# 		return True
 
-	elif Harf == char.final:
-		return True
+# 	elif char == char.final:
+# 		return True
 
-	else:
-		return False
+# 	else:
+# 		return False
 
 
 
 # getHarf gets the correspondent Harf for the given Arabic char
 def getHarf(char) :
 	for s in alphabet :
-		if s==(char) :
+		if s.equals(char) :
 			return s
 
 	return Harf(unicodee= char, isolated= char, medium= char, final= char)
@@ -152,7 +137,7 @@ def RemoveAllNonArabicChars(text ) :
 		inAlphabet = False
 
 		for s in alphabet:
-			if s==(current) :
+			if s.equals(current) :
 				inAlphabet = True
 
 		if inAlphabet :
@@ -164,11 +149,12 @@ def RemoveAllNonArabicChars(text ) :
 # ToGlyph returns the glyph representation of the given text
 def ToGlyph(text ) :
 
-	runes   = text
+	runes   = list(text)
 	length  = len(runes)
-	newText = list(runes)
+	newText = []
 
-	for i, current in runes:
+	for i in range(length):
+		current = i
 		# get the previous char
 		if (i - 1) < 0 :
 			prev = 0
@@ -189,8 +175,5 @@ def ToGlyph(text ) :
 
 	return str(newText)
 
-lis = "نَصٌ عَربِيٌّ"
 
-if SmartLength("نَصٌ عَربِيٌّ") == 7:
-        print('Test is OK!')
-        
+
