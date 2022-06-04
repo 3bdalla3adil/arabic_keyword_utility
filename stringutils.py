@@ -54,6 +54,13 @@ def RemoveTatweel(s) :
 
 	return "".join(l)
 
+# getHarf gets the correspondent Harf for the given Arabic char
+def getHarf(char) :
+	for s in alphabet :
+		if s.equals(char) :
+			return s
+
+	return Harf(unicodee= char, isolated= char, medium= char, final= char)
 
 def getCharGlyph(previousChar, currentChar, nextChar ):
 	glyph      = currentChar
@@ -95,57 +102,6 @@ def getCharGlyph(previousChar, currentChar, nextChar ):
 	return glyph
 
 
-# equals() return True if the given Arabic char is alphabetically equal to
-# the current Harf regardless its shape (Glyph)
-
-# def equals(char,c) :
-# 	if   char == char.unicodee :
-# 		return True
-
-# 	elif char == char.beggining:
-# 		return True
-
-# 	elif char == char.isolated:
-# 		return True
-
-# 	elif char == char.medium:
-# 		return True
-
-# 	elif char == char.final:
-# 		return True
-
-# 	else:
-# 		return False
-
-
-
-# getHarf gets the correspondent Harf for the given Arabic char
-def getHarf(char) :
-	for s in alphabet :
-		if s.equals(char) :
-			return s
-
-	return Harf(unicodee= char, isolated= char, medium= char, final= char)
-
-
-#RemoveAllNonAlphabetChars deletes all characters which are not included in Arabic Alphabet
-def RemoveAllNonArabicChars(text ) :
-	runes   = str(text)
-	newText = list(runes)
-
-	for current in  runes :
-		inAlphabet = False
-
-		for s in alphabet:
-			if s.equals(current) :
-				inAlphabet = True
-
-		if inAlphabet :
-			newText.append(current)
-	
-	return str(newText)
-
-
 # ToGlyph returns the glyph representation of the given text
 def ToGlyph(text ) :
 
@@ -154,7 +110,7 @@ def ToGlyph(text ) :
 	newText = []
 
 	for i in range(length):
-		current = i
+		current = runes[i]
 		# get the previous char
 		if (i - 1) < 0 :
 			prev = 0
@@ -173,7 +129,18 @@ def ToGlyph(text ) :
 		# append the new char representation to the newText
 		newText.append(glyph)
 
-	return str(newText)
+	return "".join(newText)
 
+#RemoveAllNonAlphabetChars deletes all characters which are not included in Arabic Alphabet
+def RemoveAllNonArabicChars(text ) :
+	text_aslist = list(text)
+	newText=[]
+	
+	for i in range(len(text_aslist)) :
+		for s in alphabet:
+			if text_aslist[i] == s.unicodee :
+				newText.append(text_aslist[i])
+		
+	return "".join(newText)
 
 

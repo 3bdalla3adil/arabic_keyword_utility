@@ -22,7 +22,7 @@ class Harf:
 		elif self.medium    == char:
 			return True
 
-		elif self.final     == char:
+		elif  self.final     == char:
 			return True
 
 		else:
@@ -415,7 +415,7 @@ tashkeel = dict(FATHA= True, FATHATAN= True, DAMMA= True,
 	SHADDA= True, SUKUN= True)
 
 # use dictionary for faster lookups. Disclaimer dict in python is the corresponding to map in go
-beggining_after = dict(
+beggining_after1 = dict(
 	ALEF_HAMZA_ABOVE= True,
 	ALEF_MADDA_ABOVE= True,
 	ALEF=             True,
@@ -429,3 +429,18 @@ beggining_after = dict(
 	ZAIN=             True,
 	WAW=              True,
 	ALEF_MAKSURA=     True)
+
+beggining_after = {
+	ALEF_HAMZA_ABOVE ,  
+	ALEF_MADDA_ABOVE ,  
+	ALEF ,              
+	HAMZA ,             
+	WAW_HAMZA_ABOVE ,   
+	ALEF_HAMZA_BELOW ,  
+	TEH_MARBUTA ,       
+	DAL ,               
+	THAL ,              
+	REH ,               
+	ZAIN ,              
+	WAW ,               
+	ALEF_MAKSURA      }
