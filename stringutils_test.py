@@ -15,7 +15,7 @@ class TestStringUtils(unittest.TestCase):
         self.assertEqual(Reverse(""                  ), ""                 )
        
     def test_SmartLength(self):
-        self.assertEqual(SmartLength("نَصٌ عَربِيٌّ")    , 7 )
+        self.assertEqual(SmartLength("نَصٌ عَربِيٌّ")    , 7 ) 
         self.assertEqual(SmartLength("نص عربي")    , 7 )
         self.assertEqual(SmartLength("Hello, world"), 12)
         self.assertEqual(SmartLength("Hello, 世界") , 9 )
