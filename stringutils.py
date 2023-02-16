@@ -1,24 +1,28 @@
 from alphabet import *
 
-# Reverse returns its argument string reversed rune-wise left to right.
-def Reverse(r):
-	s = list(r)
-	i,j = 0,len(s)-1
-	while i<(len(s)/2):
-    
-		s[i],s[j] = s[j],s[i]
+# Reverse returns its argument string reversed unicode characters left to right.
+def Reverse(keyword):
+	#cast the arabic keyword type to be a list.
+	keyword_as_list = list(keyword)
+	#address the first character and the final one to i , j respectively.
+	i , j = 0 , len(keyword_as_list) - 1
+	#stop when i reaches the middle of the list to gain less time complexity
+	while i < (len(keyword_as_list)/2):
+		#reverse the list endings respectively till reach the middle of the list
+		keyword_as_list[i],keyword_as_list[j] = keyword_as_list[j],keyword_as_list[i]
+		#increase i and decrease j by 1 
 		i,j = i+1,j-1
-
-	s = ''.join(s)
-	return str(s)
+	#rejoin keyword characters to be one string of characters
+	keyword_as_list = str(''.join(keyword_as_list))
+	return keyword_as_list
 
 
 # SmartLength returns the length of the given string
 # without considering the Arabic Vowels (Tashkeel).
-def SmartLength(s):
+def SmartLength(keyword):
 	# len() use int as return value, so we'd better follow for compatibility
 
-	r = list(s)
+	r = list(keyword)
 	l=[]
 	for i in range(len(r)):
 		if r[i] in tashkeel_list:
@@ -29,8 +33,8 @@ def SmartLength(s):
 
 
 # RemoveTashkeel returns its argument as string without Arabic vowels (Tashkeel).
-def RemoveTashkeel(s) :
-	r = list(s)
+def RemoveTashkeel(keyword) :
+	r = list(keyword)
 	
 	l=[]
 	for i in range(len(r)):
