@@ -2,6 +2,7 @@
 class Harf:
 
 	def __init__(self,**kwagrs):
+		#defines Harf types it either displayed at the beggining , middle , endding ,isolated or special unicode
 		self.unicodee   = kwagrs['unicodee']
 		self.isolated   = kwagrs['isolated']
 		self.beggining  = kwagrs['beggining']
@@ -39,6 +40,7 @@ KASRA    = '\u0650'
 KASRATAN = '\u064d'
 SHADDA   = '\u0651'
 SUKUN    = '\u0652'
+
 
 tashkeel_list = [FATHA,FATHATAN,DAMMA,DAMMATAN,KASRA,KASRATAN,SHADDA,SUKUN]
 
@@ -177,7 +179,7 @@ REH = Harf( # ر
 	medium=    '\ufeae',
 	final=     '\ufeae')
 
-JEH = Harf(
+JEH = Harf( # ژ
 	unicodee=   '\u0698',
 	isolated=  '\ufb8a',
 	beggining= '\u0698',
